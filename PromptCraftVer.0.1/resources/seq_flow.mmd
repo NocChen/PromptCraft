@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant U as User
+    participant D as Document
+    participant C as Commit
+    participant M as Main
+    M->>U: register(username, email, password)
+    M->>U: login(username, password)
+    U->>D: create_document(title, content)
+    D->>C: create_commit(message)
+    M->>D: get_document(title)
+    M->>C: get_commit(message)
+    U->>D: update_document(title, new_content)
+    D->>C: create_commit(new_message)
+    U->>D: delete_document(title)

@@ -1,0 +1,23 @@
+classDiagram
+    class User{
+        +str username
+        +str email
+        +str password_hash
+        +__init__(username: str, email: str, password: str)
+        +check_password(password: str): bool
+    }
+    class Document{
+        +str title
+        +str content
+        +datetime timestamp
+        +User owner
+        +__init__(title: str, content: str, owner: User)
+    }
+    class Commit{
+        +str message
+        +datetime timestamp
+        +Document document
+        +__init__(message: str, document: Document)
+    }
+    User "1" -- "*" Document: owns
+    Document "1" -- "*" Commit: has

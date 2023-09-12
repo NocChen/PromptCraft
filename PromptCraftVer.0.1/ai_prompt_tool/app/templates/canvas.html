@@ -1,0 +1,33 @@
+"""
+{% extends "layout.html" %}
+{% block content %}
+<div class="document-form">
+    <h2>Create Document</h2>
+    <form method="POST" action="{{ url_for('create_document') }}">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea id="content" name="content" class="form-control" required></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary">
+        </div>
+    </form>
+</div>
+<div class="document-list">
+    <h2>Your Documents</h2>
+    {% for document in documents %}
+    <div class="document">
+        <h3>{{ document.title }}</h3>
+        <p>{{ document.content }}</p>
+        <a href="{{ url_for('get_document', title=document.title) }}">View</a>
+        <a href="{{ url_for('update_document', title=document.title) }}">Edit</a>
+        <a href="{{ url_for('delete_document', title=document.title) }}" onclick="return confirm('Are you sure you want to delete this document?')">Delete</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+"""
